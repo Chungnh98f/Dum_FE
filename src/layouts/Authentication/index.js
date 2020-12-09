@@ -6,17 +6,17 @@ import { SignUpForm } from "../../modules/Forms/SignUpForm";
 
 const tabList = [
   {
-    key: 'Sign In',
-    tab: 'Sign In',
+    key: "Sign In",
+    tab: "Sign In",
   },
   {
-    key: 'Sign Up',
-    tab: 'Sign Up',
+    key: "Sign Up",
+    tab: "Sign Up",
   },
 ];
 
-const AuthLayout = () => {
-  const [key, setKey] = useState('Sign In');
+const AuthLayout = (props) => {
+  const [key, setKey] = useState("Sign In");
   const onTabChange = (key) => {
     setKey(key);
   };
@@ -24,16 +24,17 @@ const AuthLayout = () => {
     <div>
       <img src="/logo.jpeg" alt="" />
       <Card
-          style={{ width: '100%' }}
-          title={key}
-          tabList={tabList}
-          activeTabKey={key}
-          onTabChange={key => {
-            onTabChange(key, 'key');
-          }}
-        >
-          {key === 'Sign In' ? <SignInForm /> : <SignUpForm/>}
-        </Card>
+        style={{ width: "100%" }}
+        title={key}
+        tabList={tabList}
+        activeTabKey={key}
+        onTabChange={(key) => {
+          onTabChange(key, "key");
+        }}
+      >
+        {/* {key === 'Sign In' ? <SignInForm /> : <SignUpForm/>} */}
+        {props.children}
+      </Card>
     </div>
   );
 };

@@ -5,7 +5,12 @@ import AuthPage from "./views/pages/Authentication";
 const AppRoute = () => {
   return (
     <Switch>
-      <Route path="/auth" component={AuthPage} />
+      <Route
+        path="/auth"
+        render={() => {
+          return <AuthPage />;
+        }}
+      />
     </Switch>
   );
 };
