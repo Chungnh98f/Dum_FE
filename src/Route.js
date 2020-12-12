@@ -10,19 +10,21 @@ import sessionToken from "./authServices/token";
 const AppRoute = () => {
   const { authState } = GetAuthStateContext();
   const _sessionToken = sessionToken.getToken();
+  console.log(authState.user.accessToken);
 
   return (
     <Switch>
-      <Route path="/" component={Home} />
       <Route
         path="/auth"
         render={() => {
-          if (!_sessionToken && !authState.user.accessToken) {
+          const token = !_sessionToken && !authState.user.accessToken;
+          if (token) {
             return <AuthPage />;
           }
           return <Redirect to="/" />;
         }}
       />
+      <Route path="/" component={Home} />
       <Route path="/room" component={Room} />
       <Route path="/404" component={NotFound} />
       <Redirect to="404" />
