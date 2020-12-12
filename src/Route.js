@@ -13,6 +13,7 @@ const AppRoute = () => {
 
   return (
     <Switch>
+      <Route path="/" component={Home} />
       <Route
         path="/auth"
         render={() => {
@@ -22,7 +23,6 @@ const AppRoute = () => {
           return <Redirect to="/" />;
         }}
       />
-      <Route exact path="/" component={Home} />
       <Route path="/room" component={Room} />
       <Route path="/404" component={NotFound} />
       <Redirect to="404" />
