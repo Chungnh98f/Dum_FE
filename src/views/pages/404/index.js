@@ -19,7 +19,7 @@ function NotFound(props) {
               history.push("/");
             }}
           >
-            Back Home
+            Back to Home
           </Button>
         }
       />
