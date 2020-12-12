@@ -6,12 +6,12 @@ export const validateSignIn = (email, password) => {
     content: "",
   };
   if (!checkEmail(email)) {
-    err.content = "Email is invalid";
+    err.content = "Invalid email";
     err.hasErr = !err.hasErr;
     return err;
   }
-  if (checkPassword(password)) {
-    err.content = "Password is too short";
+  if (!checkPassword(password)) {
+    err.content = "Invalid password";
     err.hasErr = !err.hasErr;
     return err;
   }
