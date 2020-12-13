@@ -12,7 +12,7 @@ function Chatbox(props) {
     if (!values.message) {
       return;
     }
-    authState.socket = io.connect("http://localhost:5050/");
+    authState.socket = io.connect("https://test-xdum.herokuapp.com/");
     authState.socket.on("connect", () => {
       authState.socket.emit("send-message-main-room", {
         ...authState.user,

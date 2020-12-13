@@ -19,8 +19,9 @@ function Room(props) {
           { username: "Minh" },
           { username: "An" },
         ]}
+        roomId={id}
       />
-      <FunctionalTab />
+      {/* <FunctionalTab /> */}
     </RoomLayout>
   );
 }

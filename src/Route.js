@@ -25,7 +25,7 @@ const AppRoute = () => {
 
   useEffect(() => {
     if (authState.user.username) {
-      authState.socket = io.connect("http://localhost:5050/");
+      authState.socket = io.connect("https://test-xdum.herokuapp.com/");
       authState.socket.on("connect", () => {
         authState.socketId = authState.socket.id;
 

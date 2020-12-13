@@ -1,27 +1,15 @@
-import React from "react";
-import { Card } from "antd";
+import React, { useRef, useEffect } from "react";
+import { StyledVideo } from "./../usercams.styles";
 
-import { CardContainer } from "./card.styles";
+const Video = (props) => {
+  const ref = useRef();
 
-function VideoCard(props) {
-  const { username } = props;
-  return (
-    <CardContainer>
-      <Card
-        className="cam-card"
-        hoverable
-        cover={
-          <img
-            className="image"
-            alt="example"
-            src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-          />
-        }
-      >
-        <h3>{username}</h3>
-      </Card>
-    </CardContainer>
-  );
-}
+  useEffect(() => {
+    props.peer.on("stream", (stream) => {
+      ref.current.srcObject = stream;
+    });
+  }, []);
 
-export default VideoCard;
+  return <StyledVideo playsInline autoPlay ref={ref} />;
+};
+export default Video;

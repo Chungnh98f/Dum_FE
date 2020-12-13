@@ -5,7 +5,13 @@ import {
   VideoCameraOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
+import { useHistory } from "react-router-dom";
 function FunctionalTab(props) {
+  const history = useHistory();
+  const hangout = () => {
+    history.push("/");
+  };
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Button
@@ -21,6 +27,7 @@ function FunctionalTab(props) {
         icon={<VideoCameraOutlined />}
       />
       <Button
+        onClick={hangout}
         style={{ margin: "15px" }}
         type="primary"
         danger

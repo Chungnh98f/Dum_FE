@@ -7,3 +7,8 @@ export const CamsContainer = styled.div`
     flex-wrap: wrap;
   }
 `;
+
+export const StyledVideo = styled.video`
+  height: 40%;
+  width: 50%;
+`;
