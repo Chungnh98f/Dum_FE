@@ -11,11 +11,15 @@ import {
   getRegisterPending,
   getRegisterSuccess,
   getRegisterFailed,
+  getSocketConnect,
+  getSocketDisconnect,
 } from "./../actions/authAction/authActionCreators";
 import {
   getLoginEffect,
   getLogoutEffect,
   getRegisterEffect,
+  connectSocketEffect,
+  disconnectSocketEffect,
 } from "../effects/authEffect";
 
 const messKeyLogin = "messKeyLogin";
@@ -31,11 +35,9 @@ export const getLogin = async (dispatch, data) => {
   dispatch(getLoginPending());
   const res = await getLoginEffect({ email, password });
   const notification = res?.data?.message;
-  debugger;
 
   if (res && res.status >= 200 && res.status <= 300) {
-    const token = res.data.token;
-    sessionToken.setToken(token);
+    sessionToken.setToken(res.data);
     message.success({
       content: notification || "Login successful",
       key: messKeyLogin,
@@ -70,7 +72,7 @@ export const getRegister = async (dispatch, data) => {
       key: messKeyRegister,
       duration: 2,
     });
-    dispatch(getLoginSuccess("Register successful"));
+    dispatch(getRegisterSuccess("Register successful"));
     return 1;
   } else {
     message.error({
@@ -78,7 +80,7 @@ export const getRegister = async (dispatch, data) => {
       key: messKeyRegister,
       duration: 2,
     });
-    dispatch(getLoginFailed(notification || "Something went wrong"));
+    dispatch(getRegisterFailed(notification || "Something went wrong"));
     throw new Error(notification);
   }
 };
@@ -111,3 +113,7 @@ export const getLogout = async (dispatch) => {
     throw new Error(notification);
   }
 };
+
+export const connectSocket = async (dispatch, data) => {};
+
+export const disconnectSocket = async (dispatch) => {};

@@ -8,6 +8,8 @@ import {
   GetRegisterPending,
   GetRegisterSuccess,
   GetRegisterFailed,
+  GetSocketConnect,
+  GetSocketDisconnect,
 } from "./authActionTypes";
 
 export function getLoginPending() {
@@ -61,5 +63,16 @@ export function getRegisterFailed(payload) {
   return {
     type: GetRegisterFailed,
     payload: payload,
+  };
+}
+export function getSocketConnect(payload) {
+  return {
+    type: GetSocketConnect,
+    payload: payload,
+  };
+}
+export function getSocketDisconnect() {
+  return {
+    type: GetSocketDisconnect,
   };
 }

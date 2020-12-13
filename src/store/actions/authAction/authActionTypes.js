@@ -9,3 +9,7 @@ export const GetLogoutFailed = "GetLogoutFailed";
 export const GetRegisterPending = "GetRegisterPending";
 export const GetRegisterSuccess = "GetRegisterSuccess";
 export const GetRegisterFailed = "GetRegisterFailed";
+
+export const GetSocketConnect = "GetSocketConnect";
+export const GetSocketDisconnect = "GetSocketDisconnect";
+

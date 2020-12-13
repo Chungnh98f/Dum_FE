@@ -8,6 +8,7 @@ function WithAuth(Component) {
   return function (props) {
     const { authState } = GetAuthStateContext();
     const _sessionToken = sessionToken.getToken();
+
     if (!_sessionToken && !authState.user.accessToken) {
       return <Redirect to="/auth" />;
     }

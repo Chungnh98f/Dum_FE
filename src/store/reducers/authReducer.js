@@ -8,12 +8,18 @@ import {
   GetRegisterPending,
   GetRegisterSuccess,
   GetRegisterFailed,
+  GetSocketDisconnect,
+  GetSocketConnect,
 } from "./../actions/authAction/authActionTypes";
 
 export const initAuthState = {
   pending: false,
   error: null,
   user: {},
+  socket: null,
+  socketId: "",
+  users: [],
+  messages: [],
 };
 
 export function authReducer(state = initAuthState, action) {
@@ -44,6 +50,7 @@ export function authReducer(state = initAuthState, action) {
       };
     case GetLogoutSuccess:
       return {
+        ...state,
         pending: false,
         error: null,
         user: {},
@@ -71,6 +78,31 @@ export function authReducer(state = initAuthState, action) {
         ...state,
         pending: false,
         error: payload,
+      };
+    case GetSocketConnect:
+      return {
+        ...state,
+        pending: false,
+        socket: payload,
+      };
+    case GetSocketDisconnect:
+      return {
+        ...state,
+        pending: false,
+        socket: {},
+      };
+    case "UpdateUserList":
+      return {
+        ...state,
+        pending: false,
+        socket: {},
+        users: payload,
+      };
+    case "UpdateMessages":
+      return {
+        ...state,
+        pending: false,
+        messages: state.messages.concat(payload),
       };
     default:
       return state;

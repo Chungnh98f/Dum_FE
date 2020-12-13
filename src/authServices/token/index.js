@@ -3,11 +3,11 @@ const tokenKey = "ACCESS_TOKEN";
 const sessionToken = {};
 
 sessionToken.getToken = () => {
-  return window.sessionStorage.getItem(tokenKey);
+  return JSON.parse(window.sessionStorage.getItem(tokenKey));
 };
 
 sessionToken.setToken = (token) => {
-  window.sessionStorage.setItem(tokenKey, token);
+  window.sessionStorage.setItem(tokenKey, JSON.stringify(token));
 };
 
 sessionToken.clearToken = () => {

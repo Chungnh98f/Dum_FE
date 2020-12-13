@@ -14,7 +14,10 @@ const HomeLayout = (props) => {
   const history = useHistory();
   const onSignout = () => {
     getLogout(dispatch)
-      .then((res) => history.push("/"))
+      .then((res) => {
+        history.push("/");
+        window.location.reload();
+      })
       .catch((error) => console.log(error));
   };
   return (

@@ -1,4 +1,5 @@
 import { axiosInstance } from "./../../configs/axiosConfig";
+import io from "socket.io-client";
 
 export const getLoginEffect = async (payload) => {
   const { email, password } = payload;
@@ -39,3 +40,10 @@ export const getRegisterEffect = async (payload) => {
   }
   return res;
 };
+
+export const connectSocketEffect = async (payload) => {
+  let socket;
+  
+};
+
+export const disconnectSocketEffect = async () => {};
