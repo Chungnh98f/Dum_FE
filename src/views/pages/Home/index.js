@@ -8,9 +8,7 @@ import { GetAuthStateContext } from "./../../../store/context/authContext";
 function Home(props) {
   const { authState } = GetAuthStateContext();
 
-  useEffect(() => {
-    console.log(authState);
-  }, [authState]);
+  useEffect(() => {}, [authState]);
 
   return (
     <HomeLayout>

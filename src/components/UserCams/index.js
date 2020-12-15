@@ -9,11 +9,6 @@ import { Button } from "antd";
 import { AudioMutedOutlined, PhoneOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 
-const videoConstraints = {
-  height: window.innerHeight / 2,
-  width: window.innerWidth / 2,
-};
-
 const UserCams = (props) => {
   const history = useHistory();
   const { roomId } = props;
@@ -30,7 +25,7 @@ const UserCams = (props) => {
   useEffect(() => {
     socketRef.current = io.connect("https://test-xdum.herokuapp.com/");
     navigator.mediaDevices
-      .getUserMedia({ video: videoConstraints, audio: true })
+      .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         userVideo.current.srcObject = stream;
         socketRef.current.emit("join room", roomId);
@@ -53,7 +48,6 @@ const UserCams = (props) => {
             peerID: payload.callerID,
             peer,
           });
-          console.log(payload);
           setPeers((users) => [...users, peer]);
         });
 
@@ -112,10 +106,15 @@ const UserCams = (props) => {
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Button
           onClick={() => {
-            setUserCam((prevState) => ({
-              ...prevState,
-              muted: !prevState.muted,
-            }));
+            const enabled = userVideo.current.srcObject.getAudioTracks()[0]
+              .enabled;
+            if (enabled) {
+              userVideo.current.srcObject.getAudioTracks()[0].enabled = false;
+              setUserCam({ ...userCam, muted: !userCam.muted });
+            } else {
+              userVideo.current.srcObject.getAudioTracks()[0].enabled = true;
+              setUserCam({ ...userCam, muted: !userCam.muted });
+            }
           }}
           style={{ margin: "15px" }}
           type={userCam.muted ? "primary" : "dashed"}
@@ -133,6 +132,22 @@ const UserCams = (props) => {
           shape="circle"
           icon={<PhoneOutlined />}
         />
+        {/* <Button
+          type="primary"
+          onClick={() => {
+            navigator.mediaDevices
+              .getDisplayMedia({ video: { cursor: "always", audio: true } })
+              .then((stream) => {
+                userVideo.current.srcObject = stream;
+              })
+              .catch((err) => {
+                console.error("Error:" + err);
+                return null;
+              });
+          }}
+        >
+          Share screen
+        </Button> */}
       </div>
     </CamsContainer>
   );

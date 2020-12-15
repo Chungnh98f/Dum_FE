@@ -24,8 +24,12 @@ const AuthLayout = (props) => {
           defaultSelectedKeys={["/auth/sign-in"]}
           onClick={handleClick}
         >
-          <Menu.Item key="/auth/sign-in">Login</Menu.Item>
-          <Menu.Item key="/auth/sign-up">Register</Menu.Item>
+          <Menu.Item key="/auth/sign-in" className="font-content">
+            Login
+          </Menu.Item>
+          <Menu.Item key="/auth/sign-up" className="font-content">
+            Register
+          </Menu.Item>
         </Menu>
       </Layout.Header>
       <Col

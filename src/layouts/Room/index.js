@@ -24,8 +24,12 @@ const RoomLayout = (props) => {
           defaultSelectedKeys={["/auth/sign-in"]}
           onClick={handleClick}
         >
-          <Menu.Item key="/room/invite">Invite</Menu.Item>
-          <Menu.Item key="/room/info">Info</Menu.Item>
+          <Menu.Item className="font-content" key="/room/invite">
+            Invite
+          </Menu.Item>
+          <Menu.Item className="font-content" key="/room/info">
+            Info
+          </Menu.Item>
         </Menu>
       </Layout.Header>
       <Col

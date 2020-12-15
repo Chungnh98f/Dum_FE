@@ -4,6 +4,7 @@ import { GetAuthStateContext } from "./../../store/context/authContext";
 
 function UserList(props) {
   const { authState } = GetAuthStateContext();
+  console.log(authState);
   return (
     <div>
       {authState.users

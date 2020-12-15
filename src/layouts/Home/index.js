@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Col, Layout, Menu, Button } from "antd";
+import { Col, Layout, Menu, } from "antd";
 import { Link } from "react-router-dom";
 import "antd/dist/antd.css";
 
@@ -8,6 +8,7 @@ import { HomeContainer } from "./home.styles";
 import logo from "./../../assets/img/logo.jpeg";
 import { GetAuthStateContext } from "./../../store/context/authContext";
 import { getLogout } from "./../../store/middlewares/authMiddleware";
+import checkPhotoUrl from "../../authServices/checkPhotoUrl";
 
 const HomeLayout = (props) => {
   const { authState, dispatch } = GetAuthStateContext();
@@ -27,8 +28,12 @@ const HomeLayout = (props) => {
           <img src={logo} alt="logo" className="logo" />
         </Link>
         <Menu theme="light" mode="horizontal">
-          <span>{`Hello ${authState.user.username || "No name"}`}</span>
-          <Menu.Item onClick={onSignout}>Sign out</Menu.Item>
+          <span className="font-content">{`Hello ${
+            authState.user.username || "No name"
+          }`}</span>
+          <Menu.Item className="font-content" onClick={onSignout}>
+            Sign out
+          </Menu.Item>
         </Menu>
       </Layout.Header>
       <Col

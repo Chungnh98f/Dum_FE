@@ -5,6 +5,8 @@ export const DashboardContainer = styled.div`
   height: 85vh;
   & .user-list {
     width: 200px;
+    border-right: 1px solid;
+    margin-right: 15px;
   }
   & .mainboard {
     flex: 1;
@@ -43,5 +45,9 @@ export const DashboardContainer = styled.div`
         transition-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
       }
     }
+  }
+
+  & .chatbox {
+    background-color: whitesmoke;
   }
 `;

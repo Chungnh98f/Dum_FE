@@ -9,6 +9,6 @@ export const CamsContainer = styled.div`
 `;
 
 export const StyledVideo = styled.video`
-  height: 40%;
+  height: 45vh;
   width: 50%;
 `;
